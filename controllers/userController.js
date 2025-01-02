@@ -81,9 +81,8 @@ async function getCurrentUser(req, res) {
 
         return res.status(200).json(user);
     } catch (error) {
-        console.error(error);
         return res.status(200).json("error");
-    }  
+    }
 };
 
 async function getAllUsers(req, res) {
