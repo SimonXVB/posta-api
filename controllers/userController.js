@@ -110,6 +110,10 @@ async function login(req, res) {
 
         const user = await userQueries.getLoginUserDB(username);
 
+        if(user === null) {
+            return res.status(400).json("userError");
+        };
+
         if(user.username === username && bcrypt.compareSync(password, user.password)) {
             const token = jwt.sign(
                 {userId: user.id},
